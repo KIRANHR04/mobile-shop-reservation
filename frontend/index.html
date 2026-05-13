@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Yashu Mobile and Service Center</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <div class="deal-strip">
+      <span>Today only: reserve online, collect in-store within 48 hours</span>
+      <span>Trusted local mobile deals</span>
+      <span>Fast pickup support</span>
+    </div>
+
+    <header class="site-header">
+      <div class="nav-row">
+        <a class="brand" href="#">
+          <span class="brand-mark">Y</span>
+          <span>
+            <strong>Yashu Mobile</strong>
+            <small>and Service Center</small>
+          </span>
+        </a>
+        <label class="header-search">
+          <span>Search store</span>
+          <input id="searchInput" type="search" placeholder="Search iPhone, Samsung, Redmi..." />
+        </label>
+        <div class="live-status" aria-label="Live status">
+          <span class="live-dot"></span>
+          <span>Live stock</span>
+        </div>
+      </div>
+
+      <div class="quick-links" aria-label="Store highlights">
+        <span>New arrivals</span>
+        <span>Budget phones</span>
+        <span>Premium models</span>
+        <span>Reserve and pickup</span>
+        <span>Local warranty help</span>
+      </div>
+    </header>
+
+    <main>
+      <section id="shopView" class="view active">
+        <section class="hero">
+          <div class="hero-copy">
+            <p class="eyebrow">Mobile reservation marketplace</p>
+            <h1>Find it online. Reserve it now. Pick it up from the shop.</h1>
+            <p class="hero-text">
+              Browse available phones, join the waiting list when stock is tight, and avoid wasting a trip.
+            </p>
+            <div class="hero-actions">
+              <a href="#products" class="button-link">Shop deals</a>
+              <a href="#products" class="secondary button-link">Explore phones</a>
+            </div>
+            <div class="hero-stats">
+              <span><strong>48h</strong> reservation window</span>
+              <span><strong>2+</strong> waitlist automation</span>
+              <span><strong>Live</strong> stock status</span>
+            </div>
+          </div>
+
+          <div class="phone-stage" aria-hidden="true">
+            <div class="phone-orbit">
+              <div class="launch-beam"></div>
+              <div class="launch-ring ring-one"></div>
+              <div class="launch-ring ring-two"></div>
+              <div class="cartoon-launcher">
+                <span class="launcher-head"></span>
+                <span class="launcher-body"></span>
+                <span class="launcher-arm arm-left"></span>
+                <span class="launcher-arm arm-right"></span>
+                <span class="launcher-leg leg-left"></span>
+                <span class="launcher-leg leg-right"></span>
+                <span class="launch-remote"></span>
+              </div>
+              <div class="phone-3d phone-main">
+                <span class="camera"></span>
+                <span class="speaker"></span>
+                <div class="phone-screen">
+                  <span class="screen-pill"></span>
+                  <strong>Yashu Mobile</strong>
+                  <small>Service Center</small>
+                </div>
+              </div>
+              <div class="phone-3d phone-back">
+                <span class="lens one"></span>
+                <span class="lens two"></span>
+                <span class="lens three"></span>
+              </div>
+              <div class="floating-card card-deal">Launching now</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="store-bar" id="products">
+          <div>
+            <p class="eyebrow">Live catalog</p>
+            <h2>Recommended phones</h2>
+          </div>
+          <label class="search">
+            <span>Category</span>
+            <select id="categoryFilter">
+              <option value="">All categories</option>
+            </select>
+          </label>
+        </section>
+
+        <div class="category-rail">
+          <span>Top offers</span>
+          <span>5G phones</span>
+          <span>Camera phones</span>
+          <span>Gaming phones</span>
+          <span>Student picks</span>
+          <span>Exchange help</span>
+        </div>
+
+        <div id="productGrid" class="product-grid"></div>
+
+        <section class="shop-location" id="shopLocation">
+          <div class="location-copy">
+            <p class="eyebrow">Shop location</p>
+            <h2>Reserve online, then ride straight to the store.</h2>
+            <p>
+              Tap the map button to open Yashu Mobile and Service Center in Google Maps and start navigation.
+            </p>
+            <a class="button-link" href="https://maps.app.goo.gl/GNhA8wJ2w4XpWUiT6" target="_blank" rel="noopener">
+              Open Google Maps
+            </a>
+          </div>
+          <div class="bike-scene" aria-hidden="true">
+            <div class="route-card">
+              <div class="route-line">
+                <span class="pin start"></span>
+                <span class="pin end"></span>
+              </div>
+              <div class="bike-3d">
+                <span class="wheel wheel-front"></span>
+                <span class="wheel wheel-back"></span>
+                <span class="bike-frame"></span>
+                <span class="bike-seat"></span>
+                <span class="bike-handle"></span>
+                <span class="bike-box">Y</span>
+              </div>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <section id="adminView" class="view">
+        <section class="admin-login-page" id="adminLoginPage">
+          <div class="panel admin-access-card">
+            <h2>Admin Access</h2>
+            <form id="loginForm" class="stack">
+              <input id="adminEmail" type="email" placeholder="Admin email" required />
+              <input id="adminPassword" type="password" placeholder="Password" required />
+              <input id="adminToken" type="password" placeholder="Admin token" required />
+              <button type="submit">Unlock Dashboard</button>
+            </form>
+          </div>
+        </section>
+
+        <section class="admin-dashboard-page hidden" id="adminDashboardPage">
+          <div class="admin-dashboard-top">
+            <div>
+              <p class="eyebrow">Store operations</p>
+              <h1>Admin Dashboard</h1>
+            </div>
+            <button id="logoutBtn" class="secondary" type="button">Logout</button>
+          </div>
+
+          <section class="panel admin-main" id="dashboard">
+            <div class="section-head">
+              <h2>Products</h2>
+              <button id="newProductBtn" type="button">New Product</button>
+            </div>
+            <form id="productForm" class="product-form hidden">
+              <input id="productId" type="hidden" />
+              <div class="form-grid">
+                <input id="productName" placeholder="Phone name" required />
+                <input id="brand" placeholder="Brand" required />
+                <input id="category" placeholder="Category" required />
+                <input id="price" type="number" min="1" placeholder="Price" required />
+                <input id="discountPercent" type="number" min="0" max="90" placeholder="Discount %" />
+                <input id="stock" type="number" min="0" placeholder="Stock" required />
+              </div>
+              <div class="form-grid specs-grid">
+                <input id="model" placeholder="Model" />
+                <input id="storage" placeholder="Storage, e.g. 128GB" />
+                <input id="ram" placeholder="RAM, e.g. 8GB" />
+                <input id="camera" placeholder="Camera, e.g. 48MP" />
+                <input id="processor" placeholder="Processor" />
+                <input id="battery" placeholder="Battery, e.g. 5000mAh" />
+              </div>
+              <textarea id="otherDetails" placeholder="Other details"></textarea>
+              <div class="image-tools">
+                <input id="imageUrl" placeholder="Image URL" />
+                <button id="addImageUrlBtn" class="secondary" type="button">Add URL</button>
+                <input id="imageUpload" type="file" accept="image/*" />
+              </div>
+              <div id="imageList" class="image-list"></div>
+              <div class="form-actions">
+                <button type="submit">Save Product</button>
+                <button id="cancelProductBtn" class="secondary" type="button">Cancel</button>
+              </div>
+            </form>
+            <div id="adminProducts" class="admin-products"></div>
+          </section>
+
+          <section class="panel admin-main" id="reservationPanel">
+            <div class="section-head">
+              <h2>Reservations</h2>
+              <select id="statusFilter">
+                <option value="">All</option>
+                <option value="Reserved">Reserved</option>
+                <option value="Waiting">Waiting</option>
+                <option value="Collected">Collected</option>
+                <option value="Cancelled">Cancelled</option>
+                <option value="Expired">Expired</option>
+              </select>
+            </div>
+            <div id="reservationsList" class="reservations"></div>
+          </section>
+        </section>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div>
+        <a class="brand footer-brand" href="#">
+          <span class="brand-mark">Y</span>
+          <span>
+            <strong>Yashu Mobile</strong>
+            <small>and Service Center</small>
+          </span>
+        </a>
+        <p>Reserve phones online and collect from the store without the usual back-and-forth.</p>
+      </div>
+      <div>
+        <h3>Shop</h3>
+        <a href="#products">Latest phones</a>
+        <a href="#products">Live stock</a>
+        <a href="#products">Waiting list</a>
+      </div>
+      <div>
+        <h3>Support</h3>
+        <a href="tel:+916361671127">6361671127</a>
+        <a href="mailto:yashumobiles102@gmail.com">yashumobiles102@gmail.com</a>
+        <a href="#">Pickup policy</a>
+      </div>
+      <div class="footer-bottom">
+        <span>Copyright @2026 Yashu Mobile and Service Center</span>
+        <span>Built for fast local reservations</span>
+      </div>
+    </footer>
+
+    <dialog id="reservationDialog">
+      <form id="reservationForm" class="stack" method="dialog">
+        <div class="section-head">
+          <h2 id="reservationTitle">Reserve phone</h2>
+          <button class="icon-btn" value="cancel" type="button" id="closeReservationBtn">x</button>
+        </div>
+        <input id="reserveProductId" type="hidden" />
+        <input id="customerName" placeholder="Your name" required />
+        <input id="phone" placeholder="Indian mobile number" required />
+        <input id="email" type="email" placeholder="Email" required />
+        <textarea id="address" placeholder="Address" required></textarea>
+        <input id="pickupDate" type="date" required />
+        <button type="submit">Confirm Reservation</button>
+      </form>
+    </dialog>
+
+    <div id="toast" class="toast hidden" role="status"></div>
+    <script src="/static/app.js?v=admin-session-2"></script>
+  </body>
+</html>
