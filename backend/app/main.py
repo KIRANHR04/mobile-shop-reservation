@@ -32,18 +32,27 @@ app.mount("/uploads", StaticFiles(directory=str(UPLOADS_DIR)), name="uploads")
 if FRONTEND_DIR.exists():
     app.mount("/static", StaticFiles(directory=str(FRONTEND_DIR)), name="frontend")
 
-# create tables
-models.Base.metadata.create_all(bind=engine)
+def initialize_database():
+    models.Base.metadata.create_all(bind=engine)
 
-inspector = inspect(engine)
-product_columns = [column["name"] for column in inspector.get_columns("products")]
-if "discount_percent" not in product_columns:
-    with engine.begin() as connection:
-        connection.execute(text("ALTER TABLE products ADD COLUMN discount_percent INTEGER DEFAULT 0"))
-for column_name in ["model", "storage", "ram", "camera", "processor", "battery", "other_details"]:
-    if column_name not in product_columns:
+    inspector = inspect(engine)
+    product_columns = [column["name"] for column in inspector.get_columns("products")]
+    if "discount_percent" not in product_columns:
         with engine.begin() as connection:
-            connection.execute(text(f"ALTER TABLE products ADD COLUMN {column_name} VARCHAR DEFAULT ''"))
+            connection.execute(text("ALTER TABLE products ADD COLUMN discount_percent INTEGER DEFAULT 0"))
+    for column_name in ["model", "storage", "ram", "camera", "processor", "battery", "other_details"]:
+        if column_name not in product_columns:
+            with engine.begin() as connection:
+                connection.execute(text(f"ALTER TABLE products ADD COLUMN {column_name} VARCHAR DEFAULT ''"))
+
+
+@app.on_event("startup")
+def startup():
+    try:
+        initialize_database()
+    except Exception as exc:
+        print("DATABASE STARTUP ERROR:", repr(exc))
+        raise
 
 app.include_router(auth.router)
 app.include_router(products.router)
