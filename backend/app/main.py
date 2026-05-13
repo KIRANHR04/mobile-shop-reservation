@@ -18,6 +18,7 @@ BASE_DIR = Path(__file__).resolve().parents[1]
 PROJECT_DIR = BASE_DIR.parent
 UPLOADS_DIR = BASE_DIR / "uploads"
 FRONTEND_DIR = PROJECT_DIR / "frontend"
+UPLOADS_DIR.mkdir(exist_ok=True)
 
 app.add_middleware(
     CORSMiddleware,
